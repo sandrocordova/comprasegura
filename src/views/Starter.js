@@ -1,16 +1,14 @@
 import { Col, Row } from "reactstrap";
-import ProjectTables from "../components/dashboard/ProjectTable";
+import Tabla from "../components/dashboard/Tabla";
 
 const Starter = () => {
 
   return (
     <div>
       {/***Table ***/}
-     
       <Row>
-      
         <Col lg="12">
-          <ProjectTables />
+          <Tabla />
         </Col>
       </Row>
     </div>

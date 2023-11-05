@@ -1,13 +1,6 @@
-import SearchBar from './SearchBar';
+
 import { useEffect, useState } from "react";
 
-import {
-  Card,
-  CardBody,
-  CardSubtitle,
-  CardTitle,
-  Table,
-} from "reactstrap";
 import { vendedoresBd } from "../../views/vendedores";
 
 const ProjectTables = () => {
@@ -18,7 +11,7 @@ const ProjectTables = () => {
 
   return (
     <div>
-        <SearchBar/>
+      PROYECT TABLE
     </div>
   );
 };

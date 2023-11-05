@@ -1,19 +1,44 @@
-import {
-  CardBody,
-  CardSubtitle,
-  CardTitle,
-  Table,
-} from "reactstrap";
+import { CardBody, CardSubtitle, CardTitle, Table } from "reactstrap";
+import ItemTabla from "./ItemTabla";
 
-function Tabla(props){
+import { useEffect, useState } from "react";
+import { Button, Col, Input, Row, Card } from "reactstrap";
+
+import { vendedoresBd } from "../../views/vendedores";
+
+function Tabla(props) {
+  const [dataBusqueda, setDataBusqueda] = useState("ejemplo de data");
+
+  const [vendedores, setVendedores] = useState([]);
+  useEffect(() => {
+    setVendedores(vendedoresBd);
+  }, []);
+
   return (
     <div>
-      {props.data}
+      <Card>
+        {props.dataBusqueda}
         <CardBody>
-          <CardTitle tag="h5">Project Listing</CardTitle>
-          <CardSubtitle className="mb-2 text-muted" tag="h6">
-            Overview of the projects
+          <CardTitle className="mb-2 text-center" tag="h1">LISTA DE VENDEDORES</CardTitle>
+          <CardSubtitle className="mb-2 text-muted text-center" tag="h6">
+            Revisa la confiabilidad del vendedor antes de hacer tu compra
           </CardSubtitle>
+
+          <Table className="mt-3 align-middle" responsive>
+            <Col sm="12" md={{ offset: 2, size: 8 }}>
+              <Input
+                id="searchBar"
+                name="searchBar"
+                placeholder="Buscar vendedor"
+                onChange={
+                  (e) => {
+                    setDataBusqueda(e.target.value);
+                  }
+                  //{let vendedoress = vendedores.filter(vendedores.nombre===data)}
+                }
+              />
+            </Col>
+          </Table>
 
           <Table className="no-wrap mt-3 align-middle" responsive borderless>
             <thead>
@@ -26,43 +51,15 @@ function Tabla(props){
               </tr>
             </thead>
             <tbody>
-              {props.vendedores.map((tdata, index) => (
-                <tr key={index} className="border-top">
-                  <td>
-                    <div className="d-flex align-items-center p-2">
-                      <img
-                        src={tdata.avatar}
-                        className="rounded-circle"
-                        alt="avatar"
-                        width="45"
-                        height="45"
-                      />
-                      <div className="ms-3">
-                        <h6 className="mb-0">{tdata.nombre}</h6>
-                        <span className="text-muted">{tdata.cedula}</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>{tdata.nombre}</td>
-                  <td>
-                    {tdata.status === "pending" ? (
-                      <span className="p-2 bg-danger rounded-circle d-inline-block ms-3"></span>
-                    ) : tdata.status === "holt" ? (
-                      <span className="p-2 bg-warning rounded-circle d-inline-block ms-3"></span>
-                    ) : (
-                      <span className="p-2 bg-success rounded-circle d-inline-block ms-3"></span>
-                    )}
-                  </td>
-                  <td>{tdata.calificacion}</td>
-                  <td>{tdata.descripcion}</td>
-                </tr>
+              {vendedores.map((tdata, index) => (
+                <ItemTabla tdata={tdata} index={index} />
               ))}
             </tbody>
           </Table>
         </CardBody>
-  
+      </Card>
     </div>
   );
-};
+}
 
 export default Tabla;
