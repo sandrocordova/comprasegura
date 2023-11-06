@@ -1,21 +1,34 @@
-import { CardBody, CardSubtitle, CardTitle, Table } from "reactstrap";
+import { CardBody, CardSubtitle, CardTitle, Table, Card, Input, Col,Container } from "reactstrap";
 import ItemTabla from "./ItemTabla";
 
 import { useEffect, useState } from "react";
-import { Button, Col, Input, Row, Card } from "reactstrap";
 
 import { vendedoresBd } from "../../views/vendedores";
+import CreateVendedor from './CreateVendedor'
+import user1 from "../../assets/images/users/user1.jpg";
 
 function Tabla(props) {
-  const [dataBusqueda, setDataBusqueda] = useState("ejemplo de data");
-
+  const [dataBusqueda, setDataBusqueda] = useState("");
+  console.log(dataBusqueda);
   const [vendedores, setVendedores] = useState([]);
   useEffect(() => {
     setVendedores(vendedoresBd);
   }, []);
 
+  function crearVendedor(vendedor){
+    setVendedores([...vendedores,{
+      id:vendedores.length,
+      avatar: user1,
+      status: "pending",
+      nombre: vendedor.dataNombre,
+      cedula: vendedor.dataCedula,
+      calificacion: vendedor.dataCalificacion,
+      descripcion: vendedor.dataDescripcion
+    }])
+    
+  }
+
   return (
-    <div>
       <Card>
         {props.dataBusqueda}
         <CardBody>
@@ -24,7 +37,7 @@ function Tabla(props) {
             Revisa la confiabilidad del vendedor antes de hacer tu compra
           </CardSubtitle>
 
-          <Table className="mt-3 align-middle" responsive>
+          <Container className="mt-3 align-middle">
             <Col sm="12" md={{ offset: 2, size: 8 }}>
               <Input
                 id="searchBar"
@@ -38,7 +51,7 @@ function Tabla(props) {
                 }
               />
             </Col>
-          </Table>
+          </Container>
 
           <Table className="no-wrap mt-3 align-middle" responsive borderless>
             <thead>
@@ -52,13 +65,14 @@ function Tabla(props) {
             </thead>
             <tbody>
               {vendedores.map((tdata, index) => (
-                <ItemTabla tdata={tdata} index={index} />
+                <ItemTabla key={index} tdata={tdata} index={index} />
               ))}
             </tbody>
+            
           </Table>
+          <CreateVendedor crearVendedor={crearVendedor}/>
         </CardBody>
       </Card>
-    </div>
   );
 }
 
