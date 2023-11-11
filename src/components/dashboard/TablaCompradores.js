@@ -52,10 +52,10 @@ function Tabla(props) {
       {props.dataBusqueda}
       <CardBody>
         <CardTitle className="mb-2 text-center" tag="h1">
-          LISTA DE VENDEDORES
+          LISTA DE COMPRADORES
         </CardTitle>
         <CardSubtitle className="mb-2 text-muted text-center" tag="h6">
-          Revisa la confiabilidad del vendedor antes de hacer tu compra
+          Revisa la confiabilidad del comprador antes de hacer tu venta
         </CardSubtitle>
 
         <Container className="mt-3 align-middle">
@@ -75,8 +75,8 @@ function Tabla(props) {
               />
             </Col>
             <Col>
-              <Button>Nuevo Vendedor</Button>
-              <h6>¿No encuentras al Vendedor?</h6>
+              <Button>Nuevo Comprador</Button>
+              <h6>¿No encuentras al Comprador?</h6>
             </Col>
           </Row>
         </Container>
@@ -84,7 +84,7 @@ function Tabla(props) {
         <Table className="no-wrap mt-3 align-middle" responsive borderless>
           <thead>
             <tr>
-              <th>Vendedores</th>
+              <th>Comprador</th>
               <th>Nombre</th>
               <th>Status</th>
               <th>Calificación</th>

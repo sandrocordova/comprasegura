@@ -3,19 +3,29 @@ import { Link, useLocation } from "react-router-dom";
 
 const navigation = [
   {
-    title: "Dashboard",
+    title: "Información",
+    href: "/about",
+    icon: "bi bi-info-square",
+  },
+  {
+    title: "Vendedores",
     href: "/starter",
-    icon: "bi bi-speedometer2",
+    icon: "bi bi-shop",
   },
   {
-    title: "Alert",
+    title: "Compradores",
+    href: "/compradores",
+    icon: "bi bi-cart3",
+  },
+  {
+    title: "alerts",
     href: "/alerts",
-    icon: "bi bi-bell",
+    icon: "bi bi-shop",
   },
   {
-    title: "Badges",
+    title: "badges",
     href: "/badges",
-    icon: "bi bi-patch-check",
+    icon: "bi bi-person-fill",
   },
   {
     title: "Buttons",

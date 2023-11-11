@@ -1,4 +1,4 @@
-function itemTabla({ tdata, index }) {
+function itemTabla({ tdata }) {
   return (
     <tr className="border-top">
       <td>

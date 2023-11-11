@@ -51,4 +51,13 @@ export const vendedoresBd = [
     calificacion: 5,
     descripcion: "Vendedor Facebook",
   },
+  {
+    id: 5,
+    avatar: user5,
+    status: "done",
+    nombre: "Camila Canva",
+    cedula: "04150785",
+    calificacion: 5,
+    descripcion: "Vendedor Facebook",
+  },
 ];
